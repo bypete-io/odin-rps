@@ -5,19 +5,19 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
+    while (true) {
     const choice = prompt('Enter your selection: Rock, Paper, or Scissors', '');
-
     if (choice === null || choice === "") {
-       console.log("User cancelled the prompt.");
-       return getHumanChoice();
-      }  
+        console.log("User cancelled the prompt.");
+        continue;
+    }
     const answer = choice.toLowerCase();
     if (answer === 'rock' || answer === 'paper' || answer === 'scissors' ) {
         return answer;
       } else {
         console.log('Try again with Rock, Paper or Scissors');
-        return getHumanChoice();
       }
+    }
 
 }
 
