@@ -15,19 +15,28 @@ const choices = document.querySelectorAll('button');
 
 choices.forEach(choice => {
     choice.addEventListener('click', (e) => {
-        if (humanScore + computerScore < 5) {
+        if (humanScore < 5 || computerScore < 5) {
             playRound(e.currentTarget.dataset.choice);
         }
+
     })
 });
 
-function updateScore() {
+function updateScoreDisplay() {
     humanScoreDisplay.textContent = humanScore;
     computerScoreDisplay.textContent = computerScore;
-    if (humanScore + computerScore >= 5) {
+}
+
+function checkForWinner() {
+    if (humanScore === 5 || computerScore === 5) {
         choices.forEach(choice => {
             choice.disabled = true;
         });
+    }
+    if (humanScore === 5) {
+        result.textContent = `You beat the computer!`
+    } else if (computerScore === 5) {
+        result.textContent = `The computer won!`
     }
 }
 
@@ -52,12 +61,14 @@ function playRound(humanChoice, computerChoice = getComputerChoice()) {
 
     if (winMatrix[humanChoice] === computerChoice) {
         humanScore += 1;
-        updateScore();
-        return result.textContent = `You win! ${formatHumanChoice} beats ${formatcomputerChoice}`;
+        updateScoreDisplay();
+        result.textContent = `You win! ${formatHumanChoice} beats ${formatcomputerChoice}`;
+        checkForWinner();
     } else {
         computerScore += 1;
-        updateScore();
-        return result.textContent = `You lost! ${formatcomputerChoice} beats ${formatHumanChoice}`;
+        updateScoreDisplay();
+        result.textContent = `You lost! ${formatcomputerChoice} beats ${formatHumanChoice}`;
+        checkForWinner();
     }
 }
 
