@@ -4,8 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <div class="panel">
+      <div class="choices">
+        <button data-choice="rock" title="Rock">🤛</button>
+        <button data-choice="paper" title="Paper">🤚</button>
+        <button data-choice="scissors"title="Scissors"> ✌️</button>
+      </div>
+
+      <div id="result">Make a choice to begin</div>
+      <div class="scores">
+        <div id="humanScore" class="score">0</div>
+        <div id="computerScore" class="score">0</div>
+      </div>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
